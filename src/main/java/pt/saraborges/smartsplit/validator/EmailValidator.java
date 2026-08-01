@@ -3,7 +3,7 @@ package pt.saraborges.smartsplit.validator;
 import java.util.regex.Pattern;
 
 public class EmailValidator extends BasicValidator {
-    private static final Pattern HAS_EMAIL_CHARACTER = Pattern.compile("^(.+)@(\\\\S+)$");
+    private static final Pattern HAS_EMAIL_CHARACTER = Pattern.compile("^(.+)@(\\S+)$");
 
     public EmailValidator(){
         super("Email Validator");

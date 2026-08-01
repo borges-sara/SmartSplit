@@ -4,6 +4,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import pt.saraborges.smartsplit.dto.request.RegisterUserDto;
+import pt.saraborges.smartsplit.dto.response.CreatedUserResponseDto;
 import pt.saraborges.smartsplit.entity.user.User;
 import pt.saraborges.smartsplit.entity.user.valueobject.Email;
 import pt.saraborges.smartsplit.entity.user.valueobject.Password;
@@ -26,5 +27,9 @@ public abstract class UserMapper {
         Password password = Password.fromPlainText(dto.password(), passwordValidator);
 
         return new User(dto.name(), email, password, dto.createdBy(), new Date());
+    }
+
+    public CreatedUserResponseDto userToUserResponseDto(User user){
+        return new CreatedUserResponseDto(user.getName(), user.getEmail().toString());
     }
 }

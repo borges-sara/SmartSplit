@@ -2,7 +2,8 @@ package pt.saraborges.smartsplit.validator;
 
 import java.util.regex.Pattern;
 
-public class PasswordValidator extends BasicValidator {
+public class
+PasswordValidator extends BasicValidator {
     private static final Pattern UPPER_CASE = Pattern.compile("[A-Z]");
     private static final Pattern LOWER_CASE = Pattern.compile("[a-z]");
     private static final Pattern DIGITS = Pattern.compile("\\d");
