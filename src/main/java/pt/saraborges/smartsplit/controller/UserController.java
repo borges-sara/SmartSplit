@@ -5,11 +5,11 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.NotImplementedException;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import pt.saraborges.smartsplit.dto.request.RegisterUserDto;
+import pt.saraborges.smartsplit.dto.response.CreatedUserResponseDto;
 import pt.saraborges.smartsplit.service.UserService;
 
 @Controller
@@ -23,6 +23,7 @@ public class UserController {
             @ApiResponse(responseCode = "404", description = "Not Found")
     })
     @GetMapping("/users")
+    @ResponseBody
     public void getUsers(){
         throw new NotImplementedException("This functionality is not implemented yet.");
     }
@@ -36,8 +37,9 @@ public class UserController {
     })
     @PostMapping("/users")
     @ResponseBody
-    public ResponseEntity registerUser(@RequestBody RegisterUserDto dto){
-        userService.registerUser(dto);
-        return ResponseEntity.ok(HttpStatus.OK);
+    public ResponseEntity<CreatedUserResponseDto> registerUser(@RequestBody RegisterUserDto dto){
+        var createdUser = userService.registerUser(dto);
+        return ResponseEntity.ok(createdUser);
     }
 }
+
