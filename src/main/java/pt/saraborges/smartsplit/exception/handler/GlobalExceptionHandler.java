@@ -1,12 +1,12 @@
-package pt.saraborges.smartsplit.common.exception.handlers;
+package pt.saraborges.smartsplit.exception.handler;
 
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import pt.saraborges.smartsplit.common.exception.BaseException;
+import pt.saraborges.smartsplit.exception.BaseException;
 
 @RestControllerAdvice
-public class ExceptionHandler {
+public class GlobalExceptionHandler {
 
     @org.springframework.web.bind.annotation.ExceptionHandler(BaseException.class)
     public ResponseEntity<ErrorResponse> handleBaseException(BaseException ex){

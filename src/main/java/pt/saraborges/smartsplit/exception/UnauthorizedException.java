@@ -1,4 +1,4 @@
-package pt.saraborges.smartsplit.common.exception;
+package pt.saraborges.smartsplit.exception;
 
 public class UnauthorizedException extends BaseException{
         public UnauthorizedException(String message) {
