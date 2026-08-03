@@ -10,6 +10,9 @@ import java.util.Date;
 
 @Builder
 @MappedSuperclass
+@NoArgsConstructor(force = true)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@RequiredArgsConstructor
 public class BaseEntity{
 
     @Getter
@@ -19,7 +22,7 @@ public class BaseEntity{
 
     @Getter
     @NonNull
-    private Date createdAt;
+    private final Date createdAt;
 
     @Getter
     @Setter
@@ -27,40 +30,9 @@ public class BaseEntity{
 
     @Getter
     @NonNull
-    private String createdBy;
+    private final String createdBy;
 
     @Getter
     @Setter
     private String updatedBy;
-
-
-    protected  BaseEntity(){}
-
-    public BaseEntity(Date createdAt,
-                      String createdBy){
-        this.createdAt = createdAt;
-        this.createdBy = createdBy;
-    }
-
-    public BaseEntity(Date createdAt,
-                      String createdBy,
-                      Date updatedAt,
-                      String updatedBy){
-        this.createdAt = createdAt;
-        this.createdBy = createdBy;
-        this.updatedAt = updatedAt;
-        this.updatedBy = updatedBy;
-    }
-
-    protected BaseEntity(Long id,
-                          Date createdAt,
-                          Date updatedAt,
-                          String createdBy,
-                          String updatedBy){
-        this.id = id;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.createdBy = createdBy;
-        this.updatedBy = updatedBy;
-    }
 }
