@@ -1,4 +1,4 @@
-package pt.saraborges.smartsplit.common.config;
+package pt.saraborges.smartsplit.config;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;

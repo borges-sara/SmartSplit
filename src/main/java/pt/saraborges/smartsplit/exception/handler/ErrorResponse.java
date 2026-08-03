@@ -1,5 +1,8 @@
-package pt.saraborges.smartsplit.common.exception.handlers;
+package pt.saraborges.smartsplit.exception.handler;
 
+import lombok.Getter;
+
+@Getter
 public class ErrorResponse {
     private final String message;
     private final int code;
