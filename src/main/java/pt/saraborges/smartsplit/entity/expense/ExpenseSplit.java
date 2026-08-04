@@ -1,29 +1,36 @@
-package pt.saraborges.smartsplit.entity.notification;
+package pt.saraborges.smartsplit.entity.expense;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import pt.saraborges.smartsplit.entity.BaseEntity;
 import pt.saraborges.smartsplit.entity.user.User;
 
+import java.math.BigDecimal;
+
 @Entity
-@Table(name = "notifications")
-@AllArgsConstructor
+@Table(name = "expense_splits")
 @NoArgsConstructor
-public class Notification extends BaseEntity {
+@AllArgsConstructor
+public class ExpenseSplit extends BaseEntity {
+
     @Getter
     @ManyToOne
-    private User recipient;
+    private Expense expense;
 
     @Getter
-    private String message;
+    @ManyToOne
+    private User user;
 
     @Getter
-    @Enumerated(EnumType.STRING)
-    private NotificationType notificationType;
+    @Setter
+    private BigDecimal amountToPay;
+
+    @Getter
+    @Setter
+    private boolean settled;
 }
