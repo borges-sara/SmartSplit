@@ -1,32 +1,18 @@
 package pt.saraborges.smartsplit.dto.request;
 
-import pt.saraborges.smartsplit.exception.ValidationException;
+import jakarta.validation.constraints.NotBlank;
+import lombok.NonNull;
 
 public record RegisterUserDto(
+        @NonNull
+        @NotBlank
         String name,
+        @NonNull
+        @NotBlank
         String email,
+        @NonNull
+        @NotBlank
         String password,
         String createdBy //TODO: in the future, this should be managed by the system
 ) {
-    public RegisterUserDto{
-        if(name == null || name.isEmpty()){
-            fail("The 'Name' field is mandatory.");
-        }
-
-        if(email == null || email.isEmpty()){
-            fail("The 'Email' field is mandatory.");
-        }
-
-        if(password == null || password.isEmpty()){
-            fail("The 'Password' field is mandatory.");
-        }
-
-        if(createdBy == null || createdBy.isEmpty()){
-            fail("The 'Created By' field is mandatory.");
-        }
-    }
-
-    private void fail(String message){
-        throw new ValidationException(message);
-    }
 }

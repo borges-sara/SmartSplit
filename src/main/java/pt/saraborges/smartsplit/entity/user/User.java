@@ -8,9 +8,9 @@ import lombok.Getter;
 import lombok.Setter;
 import pt.saraborges.smartsplit.entity.BaseEntity;
 import pt.saraborges.smartsplit.entity.user.valueobject.Email;
-import pt.saraborges.smartsplit.entity.user.valueobject.EmailConverter;
+import pt.saraborges.smartsplit.mapper.user.EmailMapper;
 import pt.saraborges.smartsplit.entity.user.valueobject.Password;
-import pt.saraborges.smartsplit.entity.user.valueobject.PasswordConverter;
+import pt.saraborges.smartsplit.mapper.user.PasswordMapper;
 
 import java.util.Date;
 
@@ -23,11 +23,11 @@ public class User extends BaseEntity {
     private String name;
 
     @Getter
-    @Convert(converter = EmailConverter.class)
+    @Convert(converter = EmailMapper.class)
     @Column(nullable = false, unique = true)
     private Email email;
 
-    @Convert(converter = PasswordConverter.class)
+    @Convert(converter = PasswordMapper.class)
     @Column(nullable = false)
     private Password password;
 

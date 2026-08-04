@@ -16,12 +16,12 @@ import java.util.List;
 
 @Controller
 @AllArgsConstructor
-public class UserController {
+public class     UserController {
     private final UserService userService;
 
     @Operation(summary = "Get all users", description = "Returns all existing users.")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Found"),
+            @ApiResponse(responseCode = "200", description = "Success"),
             @ApiResponse(responseCode = "404", description = "Not Found")
     })
     @GetMapping("/users")
@@ -32,7 +32,7 @@ public class UserController {
 
     @Operation(summary = "Register new user", description = "Creates and registers a new user.")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "User created."),
+            @ApiResponse(responseCode = "200", description = "Success."),
             @ApiResponse(responseCode = "400", description = "Validation error."),
             @ApiResponse(responseCode = "409", description = "Duplicated user."),
             @ApiResponse(responseCode = "500", description = "Internal error.")

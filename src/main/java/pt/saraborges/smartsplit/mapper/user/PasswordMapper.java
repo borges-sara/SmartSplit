@@ -1,10 +1,11 @@
-package pt.saraborges.smartsplit.entity.user.valueobject;
+package pt.saraborges.smartsplit.mapper.user;
 
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
+import pt.saraborges.smartsplit.entity.user.valueobject.Password;
 
 @Converter(autoApply = true)
-public class PasswordConverter implements AttributeConverter<Password, String> {
+public class PasswordMapper implements AttributeConverter<Password, String> {
 
     @Override
     public String convertToDatabaseColumn(Password password) {

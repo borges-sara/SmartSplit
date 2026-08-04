@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import pt.saraborges.smartsplit.exception.ValidationException;
 
-public class BasicValidator {
+public abstract class BasicValidator {
 
     @Getter
     @Setter
