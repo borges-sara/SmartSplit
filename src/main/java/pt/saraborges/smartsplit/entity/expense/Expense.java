@@ -39,12 +39,12 @@ public class Expense extends BaseEntity {
 
     @Getter
     @Setter
-    private String currency; //TODO: replace by currency API
+    @Column(length = 3) //ISO codes
+    private String currency;
 
     @Getter
     @Setter
-    @Enumerated(EnumType.STRING)
-    private Category category;
+    private String category;
 
     @Getter
     @Setter
