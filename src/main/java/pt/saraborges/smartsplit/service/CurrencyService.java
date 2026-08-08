@@ -1,16 +1,15 @@
 package pt.saraborges.smartsplit.service;
 
-import io.swagger.v3.core.util.Json;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import pt.saraborges.smartsplit.dto.response.CurrencyResponseDto;
 import pt.saraborges.smartsplit.exception.ServiceUnavailableException;
 import tools.jackson.databind.ObjectMapper;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,9 +20,12 @@ public class CurrencyService {
     @Getter
     private Map<String, String> currencies;
 
+    @Value("${currency.file.path}")
+    private String currencyFilePath;
+
     @PostConstruct
     public void registerCurrencies() {
-        var file = new File("/Users/saraborges/Documents/Java/SmartSplit/src/main/resources/currencies.json");  //TODO: move this to app properties
+        var file = new File(currencyFilePath);
 
         if(!file.exists())
             throw new ServiceUnavailableException("The currencies file does not exist.");
