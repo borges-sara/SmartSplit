@@ -6,14 +6,15 @@ import pt.saraborges.smartsplit.entity.user.valueobject.Email;
 import pt.saraborges.smartsplit.entity.user.valueobject.Password;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    User findById(long id);
+    Optional<User> findById(long id);
 
     List<User> findAllByName(String name);
 
-    User deleteDistinctByEmailAndPassword(Email email, Password password);
+    Optional<User> deleteDistinctByEmailAndPassword(Email email, Password password);
 
     boolean existsUserByEmail(Email email);
 }
