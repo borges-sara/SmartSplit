@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import pt.saraborges.smartsplit.dto.response.CurrencyResponseDto;
+import pt.saraborges.smartsplit.dto.response.currency.CurrencyResponseDto;
 import pt.saraborges.smartsplit.exception.ServiceUnavailableException;
 import tools.jackson.databind.ObjectMapper;
 import java.io.File;

@@ -1,4 +1,4 @@
-package pt.saraborges.smartsplit.dto.response;
+package pt.saraborges.smartsplit.dto.response.user;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package pt.saraborges.smartsplit.dto.request;
+package pt.saraborges.smartsplit.dto.request.user;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.NonNull;
