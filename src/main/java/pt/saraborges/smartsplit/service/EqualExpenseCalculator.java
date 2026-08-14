@@ -20,7 +20,7 @@ public class EqualExpenseCalculator implements ExpenseCalculator{
     public List<ExpenseSplit> calculate(List<User> users, BigDecimal totalAmount) {
         var totalSplits = BigDecimal.valueOf(users.size());
         var baseAmount = totalAmount.divide(totalSplits, SCALE, RoundingMode.DOWN);
-        var remainder = totalAmount.subtract(baseAmount.multiply(totalAmount));
+        var remainder = totalAmount.subtract(baseAmount.multiply(totalSplits));
         int remainderUnits = remainder.divide(SMALLEST_UNIT).intValue();
 
         var splits = new ArrayList<ExpenseSplit>();
