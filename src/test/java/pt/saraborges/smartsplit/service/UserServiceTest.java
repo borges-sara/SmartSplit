@@ -15,6 +15,7 @@ import pt.saraborges.smartsplit.entity.user.valueobject.Password;
 import pt.saraborges.smartsplit.exception.ConflictException;
 import pt.saraborges.smartsplit.mapper.UserMapper;
 import pt.saraborges.smartsplit.repository.UserRepository;
+import pt.saraborges.smartsplit.validator.EmailValidator;
 
 import java.util.Date;
 
@@ -46,13 +47,16 @@ class UserServiceTest {
     @Mock
     private UserRepository userRepository;
 
+    @Mock
+    private EmailValidator emailValidator;
+
     private UserService userService;
 
     private RegisterUserDto validDto;
 
     @BeforeEach
     void setUp() {
-        userService = new UserService(userMapper, userRepository);
+        userService = new UserService(userMapper, userRepository, emailValidator);
         validDto = new RegisterUserDto("Jane Doe", "jane@example.com", "Str0ng!Pass", "system");
     }
 

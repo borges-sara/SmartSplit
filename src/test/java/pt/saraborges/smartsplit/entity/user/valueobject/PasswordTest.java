@@ -2,6 +2,7 @@ package pt.saraborges.smartsplit.entity.user.valueobject;
 
 import org.junit.jupiter.api.Test;
 import pt.saraborges.smartsplit.exception.ValidationException;
+import pt.saraborges.smartsplit.validator.PasswordValidator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -12,6 +13,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * password from the DB.
  */
 class PasswordTest {
+
+    private final PasswordValidator validator = new PasswordValidator();
 
     @Test
     void fromPlainText_hashesTheInput_ratherThanStoringItVerbatim() {
