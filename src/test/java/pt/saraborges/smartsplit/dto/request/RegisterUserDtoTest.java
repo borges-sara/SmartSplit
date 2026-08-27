@@ -3,6 +3,7 @@ package pt.saraborges.smartsplit.dto.request;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import pt.saraborges.smartsplit.dto.request.user.RegisterUserDto;
 import pt.saraborges.smartsplit.exception.ValidationException;
 
 import static org.assertj.core.api.Assertions.assertThat;

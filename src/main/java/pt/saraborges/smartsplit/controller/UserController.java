@@ -7,9 +7,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import pt.saraborges.smartsplit.dto.request.RegisterUserDto;
-import pt.saraborges.smartsplit.dto.response.CreatedUserResponseDto;
-import pt.saraborges.smartsplit.dto.response.GetUserResponseDto;
+import pt.saraborges.smartsplit.dto.request.user.RegisterUserDto;
+import pt.saraborges.smartsplit.dto.response.user.CreatedUserResponseDto;
+import pt.saraborges.smartsplit.dto.response.user.GetUserResponseDto;
 import pt.saraborges.smartsplit.service.UserService;
 
 import java.util.List;

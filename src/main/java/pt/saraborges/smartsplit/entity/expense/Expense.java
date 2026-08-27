@@ -48,6 +48,10 @@ public class Expense extends BaseEntity {
 
     @Getter
     @Setter
-    @OneToMany(mappedBy = "expense")
+    private String splitType;
+
+    @Getter
+    @Setter
+    @OneToMany(mappedBy = "expense", cascade = CascadeType.ALL)
     private List<ExpenseSplit> splits;
 }

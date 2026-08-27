@@ -1,6 +1,7 @@
 package pt.saraborges.smartsplit.entity.expense;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -20,11 +21,13 @@ public class ExpenseSplit extends BaseEntity {
 
     @Getter
     @ManyToOne
-    private Expense expense;
+    private User user;
 
     @Getter
+    @Setter
     @ManyToOne
-    private User user;
+    @JoinColumn(name = "expense_id")
+    private Expense expense;
 
     @Getter
     @Setter
@@ -33,4 +36,18 @@ public class ExpenseSplit extends BaseEntity {
     @Getter
     @Setter
     private boolean settled;
+
+    @Override
+    public String toString() {
+        return "Expense Split:\n-ID: "
+                + super.getId()
+                + "\n-User: "
+                + user.getEmail()
+                + "\n-Amount to pay: "
+                + amountToPay
+                +"\n-Settled: "
+                + settled
+                + "\n-Created At: "
+                + super.getCreatedAt();
+    }
 }

@@ -2,8 +2,8 @@ package pt.saraborges.smartsplit.mapper;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import pt.saraborges.smartsplit.dto.request.RegisterUserDto;
-import pt.saraborges.smartsplit.dto.response.CreatedUserResponseDto;
+import pt.saraborges.smartsplit.dto.request.user.RegisterUserDto;
+import pt.saraborges.smartsplit.dto.response.user.CreatedUserResponseDto;
 import pt.saraborges.smartsplit.entity.user.User;
 import pt.saraborges.smartsplit.entity.user.valueobject.Email;
 import pt.saraborges.smartsplit.entity.user.valueobject.Password;
