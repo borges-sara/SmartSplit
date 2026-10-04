@@ -21,6 +21,7 @@ public class ExpenseSplit extends BaseEntity {
 
     @Getter
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
     @Getter

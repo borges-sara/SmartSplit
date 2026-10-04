@@ -15,8 +15,8 @@ public class Email {
     }
 
     //TODO: include validation to check if email is already registered
-    public static Email newEmail(String email, EmailValidator validator){
-        validator.validate(email);
+    public static Email newEmail(String email){
+        EmailValidator.validate(email);
         return new Email(email);
     }
 

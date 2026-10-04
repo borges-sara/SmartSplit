@@ -8,8 +8,6 @@ import pt.saraborges.smartsplit.entity.user.User;
 import pt.saraborges.smartsplit.entity.user.valueobject.Email;
 import pt.saraborges.smartsplit.entity.user.valueobject.Password;
 import pt.saraborges.smartsplit.exception.ValidationException;
-import pt.saraborges.smartsplit.validator.EmailValidator;
-import pt.saraborges.smartsplit.validator.PasswordValidator;
 
 import java.util.Date;
 
@@ -17,11 +15,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
- * UserMapper is written by hand (not MapStruct-generated) precisely because it needs to
- * build value objects (Email, Password) through their validating factory methods rather
- * than doing a plain field copy. These tests exercise that hand-written logic directly,
- * using the real validators (not mocks) since the validation rules ARE the behaviour
- * under test here.
+ * UserMapper's registerUserDtoToUser is written by hand (a default method, not MapStruct-generated)
+ * precisely because it needs to run EmailValidator/PasswordValidator before building the Email/Password
+ * value objects, rather than doing a plain field copy. These tests exercise that hand-written logic
+ * directly, using the real (static) validators since the validation rules ARE the behaviour under test here.
  * <p>
  * We instantiate UserMapperImpl (the MapStruct-generated subclass) rather than a mock,
  * so running `./mvnw test` requires annotation processing to have already produced it -
@@ -34,8 +31,6 @@ class UserMapperTest {
     @BeforeEach
     void setUp() {
         userMapper = new UserMapperImpl();
-        userMapper.emailValidator = new EmailValidator();
-        userMapper.passwordValidator = new PasswordValidator();
     }
 
     @Test

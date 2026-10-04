@@ -3,7 +3,6 @@ package pt.saraborges.smartsplit.entity.user;
 import org.junit.jupiter.api.Test;
 import pt.saraborges.smartsplit.entity.user.valueobject.Email;
 import pt.saraborges.smartsplit.entity.user.valueobject.Password;
-import pt.saraborges.smartsplit.validator.PasswordValidator;
 
 import java.util.Date;
 
@@ -31,7 +30,7 @@ class UserTest {
     @Test
     void checkPassword_returnsTrueForTheMatchingPlainText() {
         User user = new User("Jane Doe", Email.fromExisting("jane@example.com"),
-                Password.fromPlainText("Str0ng!Pass", new PasswordValidator()),
+                Password.fromPlainText("Str0ng!Pass"),
                 "system", new Date());
 
         assertThat(user.checkPassword("Str0ng!Pass")).isTrue();
@@ -40,7 +39,7 @@ class UserTest {
     @Test
     void checkPassword_returnsFalseForAWrongAttempt() {
         User user = new User("Jane Doe", Email.fromExisting("jane@example.com"),
-                Password.fromPlainText("Str0ng!Pass", new PasswordValidator()),
+                Password.fromPlainText("Str0ng!Pass"),
                 "system", new Date());
 
         assertThat(user.checkPassword("wrong-password")).isFalse();

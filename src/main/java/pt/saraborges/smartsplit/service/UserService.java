@@ -18,9 +18,8 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 public class UserService {
-    protected UserMapper userMapper;
-    protected UserRepository userRepository;
-    protected EmailValidator emailValidator;
+    private UserMapper userMapper;
+    private UserRepository userRepository;
 
     public CreatedUserResponseDto registerUser(RegisterUserDto dto)
     {
@@ -46,6 +45,6 @@ public class UserService {
     }
 
     public Optional<User> getUserByEmail(String email){
-        return userRepository.findAllByEmail(Email.newEmail(email, emailValidator));
+        return userRepository.findAllByEmail(Email.newEmail(email));
     }
 }

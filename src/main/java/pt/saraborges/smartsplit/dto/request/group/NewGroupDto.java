@@ -1,7 +1,5 @@
 package pt.saraborges.smartsplit.dto.request.group;
 
-import java.util.Date;
-
 import pt.saraborges.smartsplit.exception.ValidationException;
 
 public record NewGroupDto(String name,
