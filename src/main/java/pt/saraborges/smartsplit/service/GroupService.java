@@ -26,7 +26,6 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-@NoArgsConstructor
 public class GroupService {
     // Repositories
     private GroupRepository groupRepository;

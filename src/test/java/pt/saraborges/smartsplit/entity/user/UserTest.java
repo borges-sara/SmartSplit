@@ -3,7 +3,6 @@ package pt.saraborges.smartsplit.entity.user;
 import org.junit.jupiter.api.Test;
 import pt.saraborges.smartsplit.entity.user.valueobject.Email;
 import pt.saraborges.smartsplit.entity.user.valueobject.Password;
-import pt.saraborges.smartsplit.validator.PasswordValidator;
 
 import java.util.Date;
 

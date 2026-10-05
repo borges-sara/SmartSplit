@@ -2,24 +2,20 @@ package pt.saraborges.smartsplit.entity.user.valueobject;
 
 import org.junit.jupiter.api.Test;
 import pt.saraborges.smartsplit.exception.ValidationException;
-import pt.saraborges.smartsplit.validator.EmailValidator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
- * Email keeps invalid instances unrepresentable by routing newEmail(...) through the
- * injected EmailValidator before construction, while fromExisting(...) skips validation
- * entirely for data already trusted (loaded back from the DB). These tests use the real
- * EmailValidator (not a mock) since the point of newEmail is that validation actually runs.
+ * Email keeps invalid instances unrepresentable by routing newEmail(...) through
+ * EmailValidator before construction, while fromExisting(...) skips validation entirely
+ * for data already trusted (loaded back from the DB).
  */
 class EmailTest {
 
-    private final EmailValidator validator = new EmailValidator();
-
     @Test
-    void newEmail_buildsEmailWhenValidatorAccepts() {
-        Email email = Email.newEmail("jane@example.com", validator);
+    void newEmail_buildsEmailWhenValid() {
+        Email email = Email.newEmail("jane@example.com");
 
         assertThat(email.toString()).isEqualTo("jane@example.com");
         assertThat(email.getEmail()).isEqualTo("jane@example.com");
@@ -27,7 +23,7 @@ class EmailTest {
 
     @Test
     void newEmail_propagatesValidationFailure_ratherThanConstructingAnInvalidEmail() {
-        assertThatThrownBy(() -> Email.newEmail("not-an-email", validator))
+        assertThatThrownBy(() -> Email.newEmail("not-an-email"))
                 .isInstanceOf(ValidationException.class);
     }
 

@@ -20,7 +20,6 @@ import java.util.Optional;
 public class UserService {
     private UserMapper userMapper;
     private UserRepository userRepository;
-    protected EmailValidator emailValidator;
 
     public CreatedUserResponseDto registerUser(RegisterUserDto dto)
     {
