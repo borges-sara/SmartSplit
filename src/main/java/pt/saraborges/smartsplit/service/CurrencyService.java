@@ -1,7 +1,6 @@
 package pt.saraborges.smartsplit.service;
 
 import jakarta.annotation.PostConstruct;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,7 +13,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-@AllArgsConstructor
 @NoArgsConstructor
 public class CurrencyService {
     @Getter

@@ -1,8 +1,10 @@
 package pt.saraborges.smartsplit.entity.user.valueobject;
 
+import lombok.Getter;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import pt.saraborges.smartsplit.validator.PasswordValidator;
 
+@Getter
 public final class Password {
 
     private final String hash;
@@ -11,8 +13,8 @@ public final class Password {
         this.hash = hash;
     }
 
-    public static Password fromPlainText(String plainText, PasswordValidator validator){
-        validator.validate(plainText);
+    public static Password fromPlainText(String plainText){
+        PasswordValidator.validate(plainText);
         String hash = BCrypt.hashpw(plainText, BCrypt.gensalt(12));
         return new Password(hash);
     }
@@ -28,10 +30,6 @@ public final class Password {
 
     public boolean matches(String plainTextAttempt){
         return BCrypt.checkpw(plainTextAttempt, this.hash);
-    }
-
-    public String getHash(){
-        return this.hash;
     }
 
     @Override

@@ -8,7 +8,6 @@ import lombok.Setter;
 import pt.saraborges.smartsplit.entity.BaseEntity;
 import pt.saraborges.smartsplit.entity.group.Group;
 import pt.saraborges.smartsplit.entity.user.User;
-
 import java.math.BigDecimal;
 import java.util.List;
 

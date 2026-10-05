@@ -55,6 +55,9 @@ class ExpenseServiceTest {
     private GroupService groupService;
 
     @Mock
+    private ExpenseSplitService expenseSplitService;
+
+    @Mock
     private EqualExpenseCalculator equalExpenseCalculator;
 
     @Mock
@@ -72,7 +75,7 @@ class ExpenseServiceTest {
 
     @BeforeEach
     void setUp() {
-        expenseService = new ExpenseService(userService, groupService, equalExpenseCalculator, expenseMapper, expenseRepository);
+        expenseService = new ExpenseService(userService, groupService, expenseSplitService, equalExpenseCalculator, expenseMapper, expenseRepository);
 
         alice = new User("Alice", Email.fromExisting("alice@example.com"),
                 Password.fromHash("hashed-value"), "system", new Date());
@@ -174,7 +177,7 @@ class ExpenseServiceTest {
                 .isInstanceOf(ResourceNotFoundException.class)
                 .hasMessageContaining("Trip");
 
-        verifyNoInteractions(userService, equalExpenseCalculator, expenseMapper, expenseRepository);
+        verifyNoInteractions(userService, expenseSplitService, equalExpenseCalculator, expenseMapper, expenseRepository);
     }
 
     @Test
@@ -186,7 +189,7 @@ class ExpenseServiceTest {
                 .isInstanceOf(ResourceNotFoundException.class)
                 .hasMessageContaining("alice@example.com");
 
-        verifyNoInteractions(equalExpenseCalculator, expenseMapper, expenseRepository);
+        verifyNoInteractions(expenseSplitService, equalExpenseCalculator, expenseMapper, expenseRepository);
     }
 
     @Test
@@ -199,6 +202,6 @@ class ExpenseServiceTest {
                 .isInstanceOf(ResourceNotFoundException.class)
                 .hasMessageContaining("bob@example.com");
 
-        verifyNoInteractions(equalExpenseCalculator, expenseMapper, expenseRepository);
+        verifyNoInteractions(expenseSplitService, equalExpenseCalculator, expenseMapper, expenseRepository);
     }
 }

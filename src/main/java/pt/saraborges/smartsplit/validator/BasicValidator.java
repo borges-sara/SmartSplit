@@ -1,20 +1,10 @@
 package pt.saraborges.smartsplit.validator;
 
-import lombok.Getter;
-import lombok.Setter;
 import pt.saraborges.smartsplit.exception.ValidationException;
 
-public abstract class BasicValidator {
+public interface  BasicValidator {
 
-    @Getter
-    @Setter
-    private String validatorName;
-
-    public BasicValidator(String name){
-        this.validatorName = name;
-    }
-
-    public void fail(String message){
-        throw new ValidationException(validatorName + ": " + message);
+    static void fail(String message) throws ValidationException {
+        throw new ValidationException(message);
     }
 }

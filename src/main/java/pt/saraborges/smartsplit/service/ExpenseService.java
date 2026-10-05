@@ -1,9 +1,7 @@
 package pt.saraborges.smartsplit.service;
 
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.NotImplementedException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pt.saraborges.smartsplit.dto.request.expense.CreateExpenseDto;
 import pt.saraborges.smartsplit.dto.response.expense.NewEqualExpenseResponse;
@@ -12,17 +10,16 @@ import pt.saraborges.smartsplit.entity.user.User;
 import pt.saraborges.smartsplit.exception.ResourceNotFoundException;
 import pt.saraborges.smartsplit.mapper.expense.ExpenseMapper;
 import pt.saraborges.smartsplit.repository.ExpenseRepository;
-import pt.saraborges.smartsplit.repository.GroupRepository;
 import java.util.List;
 
 
 @Service
-@NoArgsConstructor
 @AllArgsConstructor
 public class ExpenseService {
     // Services
     protected UserService userService;
     protected GroupService groupService;
+    protected ExpenseSplitService expenseSplitService;
     protected EqualExpenseCalculator equalExpenseCalculator;
 
     // Mappers
@@ -30,12 +27,6 @@ public class ExpenseService {
 
     // Repository
     private ExpenseRepository expenseRepository;
-
-    @Autowired
-    public ExpenseService(GroupRepository groupRepository, ExpenseRepository expenseRepository, GroupService groupService) {
-        this.expenseRepository = expenseRepository;
-        this.groupService = groupService;
-    }
 
     public NewEqualExpenseResponse createEqualSplitExpense(CreateExpenseDto dto) {
         var group = groupService
@@ -49,7 +40,9 @@ public class ExpenseService {
                 -> new ResourceNotFoundException("There is no registered User with the email '" + dto.paidByEmail() + "'."));
 
         var dividedBy = getDividedByUsers(dto.dividedByEmails(), dto.paidByEmail());
+
         var expenseSplits = equalExpenseCalculator.calculate(dividedBy, dto.amount());
+
         var expense = new Expense(
                 dto.description(),
                 dto.amount(),
@@ -60,7 +53,11 @@ public class ExpenseService {
                 dto.splitType().name(),
                 expenseSplits);
 
+        // save splits
         expenseSplits.forEach(split -> split.setExpense(expense));
+        expenseSplitService.saveSplits(expenseSplits);
+
+        // save expense
         expenseRepository.save(expense);
         return expenseMapper.expenseToNewEqualExpenseDto(expense);
     }

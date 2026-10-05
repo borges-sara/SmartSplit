@@ -77,10 +77,4 @@ class PasswordValidatorTest {
                 .isInstanceOf(ValidationException.class)
                 .hasMessageContaining("special characters");
     }
-
-    @Test
-    void prefixesFailureMessagesWithTheValidatorName() {
-        assertThatThrownBy(() -> validator.validate(null))
-                .hasMessageContaining("Password Validator");
-    }
 }
